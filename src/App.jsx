@@ -6,8 +6,6 @@ import Popular from "./views/Popular";
 import LatestReleases from "./views/LatestReleases";
 
 
-
-
 export default function App() {
     return (
         <BrowserRouter>
