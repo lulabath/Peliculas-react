@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useMovieApi from "../hooks/useMovieApi";
+import ContainCard from "../components/ContainCard";
 
 const Popular = () => {
     const { movies, getMovies } = useMovieApi();
@@ -12,6 +13,7 @@ const Popular = () => {
         <div>
             polulares
             {/* acá retornaría las peliculas populares, con el mapeoooo(recordar key y movie.id)  */}
+            <ContainCard movies={movies} />
         </div>
     );
 };

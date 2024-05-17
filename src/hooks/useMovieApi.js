@@ -3,11 +3,13 @@ import axios from 'axios';
 
 export default function useMovieApi() {
     const [movies, setMovies] = useState([]);
+    const [url, setUrl] = useState('');
 
     async function getMovies(url) {
-        try {
+        try{
             const { data } = await axios(url);
             setMovies(data.results);
+            setUrl(url);
         } catch (error) {
             console.log(error);
         }
@@ -15,5 +17,6 @@ export default function useMovieApi() {
     return {
         movies,
         getMovies,
+        url
     };
 }

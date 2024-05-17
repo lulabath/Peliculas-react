@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import useMovieApi from "../hooks/useMovieApi";
+import ContainCard from "../components/ContainCard";
+import '../App.css';
 
 const Home = () => {
     const { movies, getMovies } = useMovieApi();
@@ -12,8 +14,8 @@ const Home = () => {
 
     return (
         <div>
-            <h2>Moviesss</h2>
             {/*acá retornaría el total de las peliculas. Iría el map acá */}
+            <ContainCard movies={movies}/>
         </div>
     )
 };

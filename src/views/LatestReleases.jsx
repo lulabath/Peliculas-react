@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useMovieApi from "../hooks/useMovieApi";
+import ContainCard from "../components/ContainCard";
 
 const LatestReleases = () => {
     const { movies, getMovies } = useMovieApi();
@@ -12,6 +13,7 @@ const LatestReleases = () => {
         <div>
             ultimos
             {/* acá retornaría los ultimos lanzamientos, mapeo y recordar key y id de cada peli */}
+            <ContainCard movies={movies}/>
         </div>
     )
 }

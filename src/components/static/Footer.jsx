@@ -1,19 +1,19 @@
-
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Typography } from '@mui/material';
 
 export default function Footer() {
   return (
     <footer style={{
-      backgroundColor: '#5F9EA0',
-      color: 'white',
+      backgroundColor: 'inherit',
+      color: '#EAEAEC',
       padding: '20px',
-      position: 'fixed',
+      margin: '40px 0 10px 0',
       bottom: '0px',
       width: '100vw',
       textAlign: 'center',
-      left:'0px',
+      left: '0px',
     }}>
-      <p>Hecho por Luna Agustina Bath <FavoriteBorderIcon sx={{ verticalAlign: 'middle' }} /></p>
+      <Typography>Hecho por Luna Agustina Bath <FavoriteBorderIcon sx={{ verticalAlign: 'middle' }} /></Typography>
     </footer>
   )
 }
