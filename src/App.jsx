@@ -5,6 +5,7 @@ import Header from "./components/static/Header";
 import Popular from "./views/Popular";
 import LatestReleases from "./views/LatestReleases";
 import { Box } from "@mui/material";
+import Detail from "./views/Detail";
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/latestReleases" element={<LatestReleases />} />
                         <Route path="/popular" element={<Popular />} />
+                        <Route path="/detail/:id" element={<Detail />} />
                         <Route path="*" element={<h1>error {/*personificar lindo*/ }</h1>} />
                     </Routes>
                     <Footer />
