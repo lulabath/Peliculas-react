@@ -1,15 +1,16 @@
 import { useState } from "react";
 import axios from 'axios';
 
-export default function useMovieApi() {
+const useMovieApi = () => {
     const [movies, setMovies] = useState([]);
-    const [url, setUrl] = useState('');
+    const [totalPages, setTotalPages] = useState(0);
 
     async function getMovies(url) {
         try{
             const { data } = await axios(url);
             setMovies(data.results);
-            setUrl(url);
+            setTotalPages(data.total_pages);
+            console.log(totalPages);
         } catch (error) {
             console.log(error);
         }
@@ -17,6 +18,8 @@ export default function useMovieApi() {
     return {
         movies,
         getMovies,
-        url
+        totalPages
     };
 }
+
+export default useMovieApi;

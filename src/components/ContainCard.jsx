@@ -7,7 +7,6 @@ const ContainCard = ({ movies }) => {
         <Grid container spacing={1} justifyContent={'center'} sx={{ padding: 1, width: '100vw', margin:'0'}}>
             {movies.map(movie => (
                 <Grid item xs={4} sm={3} md={2} lg={2} xl={2} key={movie.id}>
-                    {/* uso el componente link de MUI para la navegacion de ruta */}
                     <MuiLink 
                     component={Link} 
                     to={`/detail/${movie.id}`}
@@ -18,7 +17,7 @@ const ContainCard = ({ movies }) => {
                             transition: 'transform 0.3s ease-in-out',
                         }
                       }}>
-                        <Card style={{ height: '95%', width:'100%', borderRadius:0 }}>
+                        <Card style={{ height: '100%', width:'100%', borderRadius:0 }}>
                             <CardMedia
                                 component="img"
                                 image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

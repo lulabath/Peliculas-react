@@ -6,6 +6,7 @@ import Popular from "./views/Popular";
 import LatestReleases from "./views/LatestReleases";
 import { Box } from "@mui/material";
 import Detail from "./views/Detail";
+import { Margin, Padding, WidthFull } from "@mui/icons-material";
 
 
 export default function App() {

@@ -13,7 +13,7 @@ export default function Footer() {
       textAlign: 'center',
       left: '0px',
     }}>
-      <Typography>Hecho por Luna Agustina Bath <FavoriteBorderIcon sx={{ verticalAlign: 'middle' }} /></Typography>
+      <Typography>Hecho por Luna Agustina Bath <FavoriteBorderIcon sx={{ verticalAlign: 'middle'}} /></Typography>
     </footer>
   )
 }

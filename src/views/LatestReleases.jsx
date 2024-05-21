@@ -1,20 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useMovieApi from "../hooks/useMovieApi";
 import ContainCard from "../components/ContainCard";
+import CustomPagination from "../components/CustomPagination";
+import { Box } from "@mui/material";
 
 const LatestReleases = () => {
-    const { movies, getMovies } = useMovieApi();
+    const { movies, getMovies, totalPages } = useMovieApi();
+    const [ currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        getMovies('https://api.themoviedb.org/3/movie/now_playing?api_key=f75090a7829322f57b831594af1564ba')
-    }, []); // creería que la dependencia queda vecía para que se ejecute solo cuando de monta el componente. A chequear!
-    console.log(movies);
+        const url = (`https://api.themoviedb.org/3/movie/now_playing?api_key=f75090a7829322f57b831594af1564ba&page=${currentPage}`)
+        getMovies(url);
+    }, [currentPage]); // creería que la dependencia queda vecía para que se ejecute solo cuando de monta el componente. A chequear!
+    //console.log(movies);
+
     return (
-        <div>
+        <Box sx={{ margin: '0'}}>
             ultimos
             {/* acá retornaría los ultimos lanzamientos, mapeo y recordar key y id de cada peli */}
             <ContainCard movies={movies}/>
-        </div>
+            <CustomPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+        </Box>
     )
 }
 export default LatestReleases;
