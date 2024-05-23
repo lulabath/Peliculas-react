@@ -13,7 +13,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <Box style={{
-                backgroundImage: "linear-gradient(290deg, rgba(10, 5, 37, 0.97), rgba(13, 4, 67, 1)",
+                backgroundColor: 'black',
                 minHeight: "100vh",
                 overflow: "hidden",
                 color: "white",

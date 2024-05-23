@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useMovieApi from "../hooks/useMovieApi";
 import ContainCard from "../components/ContainCard";
 import CustomPagination from "../components/CustomPagination";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Popular = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
@@ -17,7 +17,8 @@ const Popular = () => {
     console.log(movies);
     return (
         <Box>
-            polulares
+            {/*fantan estilar varias cositas, NO OLVIDARR */}
+            <Typography variant="h5" sx={{fontWeight:'bold'}}>Populares</Typography>
             {/* acá retornaría las peliculas populares, con el mapeoooo(recordar key y movie.id)  */}
             <ContainCard movies={movies} />
             <CustomPagination

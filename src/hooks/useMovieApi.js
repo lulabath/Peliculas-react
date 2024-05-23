@@ -10,7 +10,7 @@ const useMovieApi = () => {
             const { data } = await axios(url);
             setMovies(data.results);
             setTotalPages(data.total_pages);
-            console.log(totalPages);
+            console.log(data);
         } catch (error) {
             console.log(error);
         }

@@ -16,7 +16,8 @@ const LatestReleases = () => {
 
     return (
         <Box sx={{ margin: '0'}}>
-            ultimos
+            {/* faltan estilar varias cositas. no olvidarr */}
+            <Typography variant="h5" sx={{fontWeight:'bold'}}>Ultimos lanzamientos</Typography>
             {/* acá retornaría los ultimos lanzamientos, mapeo y recordar key y id de cada peli */}
             <ContainCard movies={movies}/>
             <CustomPagination

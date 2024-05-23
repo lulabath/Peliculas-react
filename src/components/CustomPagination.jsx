@@ -14,7 +14,7 @@ import { Pagination as MuiPagination, Stack } from "@mui/material";
          count={totalPages}
          page={currentPage}
          variant='outlined'
-         color='secondary'
+         color='primary'
          size='medium'
          onChange={handlePageChange}
          sx={{

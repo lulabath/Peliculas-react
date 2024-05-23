@@ -64,19 +64,21 @@ const Detail = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 padding: '2px',
-                marginBottom: '10px'
+                marginBottom: 'auto'
             }}
         >
             {/* imagen de fondo, la que dice backdrop_path */}
             <Box
                 sx={{/*estilos del box con la info y el trailer */
                     display: 'flex',
+                    justifyContent: 'space-between',
                     flexDirection: { xs: 'column', sm: 'row' },
                     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    padding: '2px',
+                    padding: '5px',
+                    marginTop:'auto',
                     borderRadius: '2px',
-                    maxWidth: '70%',
-                    maxHeight: { xs: '80%', sm: '80%' }
+                    maxWidth: '80%',
+                    height: { xs: '80%', sm: '80%' },
                 }}
             >
                 <Box
@@ -87,21 +89,24 @@ const Detail = () => {
                         color: 'white',
                         flexDirection: 'column',
                         justifyContent: 'center',
-                        marginBottom: { xs: '2', sm: '0' },
-                        marginLeft: '2px'
+                        marginBottom: { xs: '2px', sm: '0' },
+                        marginLeft: '2px',
+                        overflowY: 'auto',
+                        maxWidth: { xs:'100%', sm:'50%' },
+                        maxHeight: '100vh',
                     }}
                 >
                     {/*estilos devlos textos :)*/}
-                    <Typography variant="h4" sx={{ marginBottom: 2 }}>
+                    <Typography variant="h6" sx={{ margin: 'auto' }}>
                         {movie.title}
                     </Typography>
-                    <Typography variant="body1" sx={{ marginBottom: 2 }}>
+                    <Typography variant="body2" sx={{ marginBottom: '2px' }}>
                         {movie.overview}
                     </Typography>
-                    <Typography variant="h6" sx={{ marginBottom: 1 }}>
+                    <Typography variant="h6" sx={{ marginBottom: '1px' }}>
                         Géneros:
                     </Typography>
-                    <Typography variant="body1" sx={{marginBottom: 2}}>
+                    <Typography variant="body1" sx={{marginBottom: '2px'}}>
                         {movie.genres.map((genre) => genre.name).join(',')}
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
@@ -120,7 +125,6 @@ const Detail = () => {
                     sx={{
                         width: { xs:'0', sm: '250px' },
                         height: { xs:'0', sm: 'auto' },
-                        marginLeft: { sm: '2px' },
                         borderRadius: '8px',
                     }}
                 />

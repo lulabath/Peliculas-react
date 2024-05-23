@@ -43,12 +43,12 @@ export default function Header() {
   return (
     <AppBar
       position='fixed'
-      style={{ backgroundColor: "rgba(0,0,0, 0.6)", color: "#EAEAEC", padding: '15px 0' }}
+      style={{ backgroundColor: "rgba(0,0,0, 0.6)", padding: '15px 0' }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Typography
           variant='h5'
-          style={{ marginLeft: '0px', fontWeight: 'bold' }}
+          style={{ margin: '5px', fontWeight: 'bold' }}
         >
           <LocalMoviesIcon
             sx={{ verticalAlign: 'middle', fontWeight: 'bold' }}

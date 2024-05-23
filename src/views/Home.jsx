@@ -1,26 +1,76 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import useMovieApi from "../hooks/useMovieApi";
 import ContainCard from "../components/ContainCard";
 import CustomPagination from "../components/CustomPagination";
-import { Box } from "@mui/material";
-
+import { Box, Button, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Link } from "react-router-dom"
+import Carousel from "react-multi-carousel";
+import CustomCarousel from "../components/CustomCarousel";
 const Home = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
-    const [ currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const apiKey = 'f75090a7829322f57b831594af1564ba';
 
     useEffect(() => {
-        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=f75090a7829322f57b831594af1564ba&page=${currentPage}`);
+        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`);
         getMovies(url);
     }, [currentPage]);
 
+    //pruebo primero con la lista de populares
+    const popularMovies = [...movies].sort((a, b) => b.popularity - a.popularity);
+    const topRatedMovie = [...movies].sort((a, b) => b.vote_average - a.vote_average);
+
     return (
-        <Box>
-            {/*acá retornaría el total de las peliculas. Iría el map acá */}
+        <Box sx={{ margin: '100px 20px', justifyContent: 'center' }}>
+            <CustomCarousel movies={movies.slice(10, 20)} />
+            <Box sx={{ display: 'flex', flexDirection: { xs:'column', sm: 'row'}, justifyContent: {xs: 'center', sm:'space-between'}, margin: '60px' }}>
+                <Box sx={{ flex: '1', margin: '10px', maxWidth: {xs: '95%', sm:'45%'}, backgroundColor: 'rgba(15, 15, 15, 1)' }}>
+                    <Typography sx={{ marginLeft: '35%' }} variant="h5">Populares</Typography>
+                    <List style={{ maxHeight: '250px', overflow: 'auto' }}>
+                        {popularMovies.slice(0, 10).map(movie => (
+                            <div key={movie.id}>
+                                <ListItem>
+                                    <ListItemText primary={movie.title}></ListItemText>
+                                    <Button
+                                        variant='contained'
+                                        component={Link}
+                                        to={`/detail/${movie.id}`}
+                                    >
+                                        Ver
+                                    </Button>
+                                </ListItem>
+                            </div>
+                        ))}
+                    </List>
+                </Box>
+                <Box sx={{ flex: '1', margin: '10px', maxWidth: {xs: '95%', sm:'45%'}, backgroundColor: 'rgba(15, 15, 15, 1)', justifyContent:'center' }} >
+                    <Typography sx={{ marginLeft: '35%' }} variant="h5">Mejor puntadas</Typography>
+                    <List sx={{ maxHeight: '250px', overflow: 'auto' }}>
+                        {topRatedMovie.slice(0, 10).map(movie => (
+                            <div key={movie.id}>
+                                <ListItem>
+                                    <ListItemText primary={movie.title} />
+                                    <Button
+                                        variant='contained'
+                                        component={Link}
+                                        to={`/detail/${movie.id}`}
+                                    >
+                                        Ver
+                                    </Button>
+                                </ListItem>
+                            </div>
+                        )
+
+                        )}
+                    </List>
+                </Box>
+            </Box>
             <ContainCard movies={movies} />
             <CustomPagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
             />
         </Box>
     );
