@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useMovieApi from "../hooks/useMovieApi";
 import ContainCard from "../components/ContainCard";
 import CustomPagination from "../components/CustomPagination";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const LatestReleases = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
@@ -15,9 +15,9 @@ const LatestReleases = () => {
     //console.log(movies);
 
     return (
-        <Box sx={{ margin: '0'}}>
+        <Box sx={{ margin: '20px',paddingTop:8, justifyContent:'center'}}>
             {/* faltan estilar varias cositas. no olvidarr */}
-            <Typography variant="h5" sx={{fontWeight:'bold'}}>Ultimos lanzamientos</Typography>
+            <Typography variant="h4" sx={{fontWeight:'bold', textAlign: 'center', marginBottom:'20px'}}>Últimos lanzamientos</Typography>
             {/* acá retornaría los ultimos lanzamientos, mapeo y recordar key y id de cada peli */}
             <ContainCard movies={movies}/>
             <CustomPagination

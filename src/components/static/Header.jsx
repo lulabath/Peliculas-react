@@ -3,6 +3,7 @@ import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);//acá estaría guardando el estado del menú. para controlar si esta abierto o cerrado
@@ -10,9 +11,9 @@ export default function Header() {
   const menuItems = [
     //acá tengo que poner los elementos del menu y las rutas a las que nos va a dirigir en forma de  obj
     { text: 'Inicio', path: '/' },
-    { text: 'Ultimos lanzamientos', path: '/latestReleases' },
+    { text: 'Últimos lanzamientos', path: '/latestReleases' },
     { text: 'Populares', path: '/popular' },
-    //{ text: 'Buscar', path:'/search'},
+    { text: 'Favoritas', path:'/favorites'},
   ];
 
   const drawer = (
@@ -42,39 +43,39 @@ export default function Header() {
 
   return (
     <AppBar
-      position='fixed'
-      style={{ backgroundColor: "rgba(0,0,0, 0.6)", padding: '15px 0' }}
+      position='fixed' style={{ backgroundColor: "rgba(0,0,0, 0.6)", padding: '10px 0' }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography
-          variant='h5'
-          style={{ margin: '5px', fontWeight: 'bold' }}
-        >
-          <LocalMoviesIcon
-            sx={{ verticalAlign: 'middle', fontWeight: 'bold' }}
-          />
-          MovieApp
-        </Typography>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            color: 'inherit'
-          }}
-        >
-          {/* estos son mis buttons de nav para las pantallas medianas y grandes. */}
-          {menuItems.map((item) => (
-            <Button
-              color='inherit'
-              component={Link}
-              to={item.path}
-              key={item.text}
-              sx={{ fontWeight: '600' }}
-            >
-              {item.text}
-            </Button>
-          ))}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant='h5' style={{ margin: '5px', fontWeight: 'bold' }}
+          >
+            <LocalMoviesIcon
+              sx={{ verticalAlign: 'middle', fontWeight: 'bold' }}
+            />
+            MovieApp
+          </Typography>
         </Box>
-        {/*acá hago que sea visible mi menú hamburguesa en pantallas chicas*/}
+        <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block' }, color: 'inherit' }} >
+            {/* estos son mis buttons de nav para las pantallas medianas y grandes. */}
+            {menuItems.map((item) => (
+              <Button
+                color='inherit'
+                component={Link}
+                to={item.path}
+                key={item.text}
+                sx={{ fontWeight: '600', color: '#CBCBCD' }}
+              >
+                {item.text}
+              </Button>
+            ))}
+          </Box>
+        </Box>
+        <Box sx={{ display:'flex', alignItems:'center' }}>
+          {/*acá hago que sea visible mi menú hamburguesa en pantallas chicas*/}
+        <IconButton color='inherit' component={Link} to='/search'>
+          <SearchIcon sx={{ color: '#CBCBCD'}}/>
+        </IconButton>
         <IconButton
           color='inherit'
           aria-label='open drawer'
@@ -83,6 +84,7 @@ export default function Header() {
         >
           <MenuIcon />
         </IconButton>
+        </Box>
       </Toolbar>
       <Drawer
         anchor='right'

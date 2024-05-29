@@ -16,9 +16,9 @@ const Popular = () => {
 
     console.log(movies);
     return (
-        <Box>
+        <Box sx={{ margin: '20px',padding:8, justifyContent:'center'}}>
             {/*fantan estilar varias cositas, NO OLVIDARR */}
-            <Typography variant="h5" sx={{fontWeight:'bold'}}>Populares</Typography>
+            <Typography  variant="h4" sx={{fontWeight:'bold', textAlign: 'center', marginBottom:'20px'}}>Populares</Typography>
             {/* acá retornaría las peliculas populares, con el mapeoooo(recordar key y movie.id)  */}
             <ContainCard movies={movies} />
             <CustomPagination

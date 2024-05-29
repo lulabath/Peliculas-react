@@ -2,36 +2,44 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Footer from "./components/static/Footer";
 import Header from "./components/static/Header";
-import Popular from "./views/Popular";
 import LatestReleases from "./views/LatestReleases";
+import Popular from "./views/Popular";
+import Search from "./views/Search";
 import { Box } from "@mui/material";
 import Detail from "./views/Detail";
-import { Margin, Padding, WidthFull } from "@mui/icons-material";
+import { FavoritesProvider } from "./context/FavoritesContext";
+import Favorites from "./views/Favorites";
 
 
 export default function App() {
     return (
-        <BrowserRouter>
-            <Box style={{
-                backgroundColor: 'black',
-                minHeight: "100vh",
-                overflow: "hidden",
-                color: "white",
-            }}>
-                {/* <Typography fontFamily="Roboto" fontWeight="900" fontSize="16px" lineHeight="1.5"> */}
+        <FavoritesProvider>
+            <BrowserRouter>
+                <Box style={{
+                    backgroundColor: '#04011A',
+                    minHeight: "100vh",
+                    width:'100%',
+                    overflow: "hidden",
+                    color: "white",
+                    padding:0,
+                    margin:0,
+                }}>
+                    {/* <Typography fontFamily="Roboto" fontWeight="900" fontSize="16px" lineHeight="1.5"> */}
                     <Header />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/latestReleases" element={<LatestReleases />} />
                         <Route path="/popular" element={<Popular />} />
                         <Route path="/detail/:id" element={<Detail />} />
-                        <Route path="*" element={<h1>error {/*personificar lindo*/ }</h1>} />
+                        <Route path="/search" element={<Search />} />
+                        <Route path="/favorites" element={<Favorites />} />
+                        <Route path="*" element={<h1>error {/*personificar lindo*/}</h1>} />
                     </Routes>
                     <Footer />
-                {/* </Typography> */}
-            </Box>
+                </Box>
+            </BrowserRouter>
+        </FavoritesProvider>
 
-        </BrowserRouter>
 
     );
 }

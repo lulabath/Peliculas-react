@@ -22,7 +22,7 @@ const Home = () => {
     const topRatedMovie = [...movies].sort((a, b) => b.vote_average - a.vote_average);
 
     return (
-        <Box sx={{ margin: '100px 20px', justifyContent: 'center' }}>
+        <Box sx={{ margin: 0, justifyContent: 'center', padding:0, width:'100%', minHeight:'100vh', backgroundColor:'#04011A', display:'flex', flexDirection:'column' }}>
             <CustomCarousel movies={movies.slice(10, 20)} />
             <Box sx={{ display: 'flex', flexDirection: { xs:'column', sm: 'row'}, justifyContent: {xs: 'center', sm:'space-between'}, margin: '60px' }}>
                 <Box sx={{ flex: '1', margin: '10px', maxWidth: {xs: '95%', sm:'45%'}, backgroundColor: 'rgba(15, 15, 15, 1)' }}>
