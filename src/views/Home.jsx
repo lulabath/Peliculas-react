@@ -4,14 +4,14 @@ import ContainCard from "../components/ContainCard";
 import CustomPagination from "../components/CustomPagination";
 import { Box, Button, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { Link } from "react-router-dom"
-import Carousel from "react-multi-carousel";
 import CustomCarousel from "../components/CustomCarousel";
 const Home = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&page=${currentPage}`);
+        const apiKey = import.meta.env.VITE_API_KEY;
+        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`);
         getMovies(url);
     }, [currentPage]);
 
