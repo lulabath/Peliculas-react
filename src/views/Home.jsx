@@ -11,9 +11,15 @@ const Home = () => {
 
     useEffect(() => {
         const apiKey = import.meta.env.VITE_API_KEY;
-        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`);
+
+        if(!apiKey) {
+            console.error('Error apiKey');
+            return;
+        }
+
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`;
         getMovies(url);
-    }, [currentPage]);
+    }, [currentPage, getMovies]);
 
     //pruebo primero con la lista de populares
     const popularMovies = [...movies].sort((a, b) => b.popularity - a.popularity);
