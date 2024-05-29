@@ -10,10 +10,8 @@ const Home = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
     const [currentPage, setCurrentPage] = useState(1);
 
-    const apiKey = 'f75090a7829322f57b831594af1564ba';
-
     useEffect(() => {
-        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`);
+        const url = (`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&page=${currentPage}`);
         getMovies(url);
     }, [currentPage]);
 

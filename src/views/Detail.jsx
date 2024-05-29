@@ -1,10 +1,12 @@
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Detail = () => {
     const { id } = useParams(); //capto el id de la url que corresponde a la pelicula
+    const navigate = useNavigate();
+
     //estados para guardar datos de pelicula, url del trailer, para controlar si se esta viendo el trailer
     const [movie, setMovie] = useState(null);
     const [trailerUrl, setTrailerUrl] = useState(null);
@@ -46,11 +48,12 @@ const Detail = () => {
     if (!movie) return <div>Loading..{/* buscar un loading lindo */}</div>;
 
     const handleBackClick = () => {
-        console.log('blablaback');
+        navigate(-1);
+        console.log('back');
     };
     const handleTrailerClick = () => {
         setShowTrailer(true);
-        console.log('blablatrailer');
+        console.log('trailer');
     };
 
     return (

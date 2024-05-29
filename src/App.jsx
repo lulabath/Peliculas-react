@@ -9,6 +9,7 @@ import { Box } from "@mui/material";
 import Detail from "./views/Detail";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import Favorites from "./views/Favorites";
+import "./index.css";
 
 
 export default function App() {
