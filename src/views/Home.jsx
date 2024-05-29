@@ -8,10 +8,9 @@ import CustomCarousel from "../components/CustomCarousel";
 const Home = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
     const [currentPage, setCurrentPage] = useState(1);
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
-        const apiKey = import.meta.env.VITE_API_KEY;
-
         if(!apiKey) {
             console.error('Error apiKey');
             return;
