@@ -8,10 +8,6 @@ const useMovieApi = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     async function getMovies(url) {
-        if(!apiKey) {
-            console.error('apkiKey');
-            return;
-        }
         try{
             const { data } = await axios(url);
             console.log(data);
@@ -23,10 +19,6 @@ const useMovieApi = () => {
     
     }
     async function searchMovies(query, page=1) {
-        if(!apiKey) {
-            console.error('apkiKey', error);
-            return;
-        }
         try {
             const { data } = await axios(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${page}`);
             setMovies(data.results);

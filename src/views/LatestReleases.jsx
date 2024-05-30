@@ -9,7 +9,6 @@ const LatestReleases = () => {
     const [ currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        
     const apiKey = import.meta.env.VITE_API_KEY;
         const url = (`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=${currentPage}`)
         getMovies(url);
