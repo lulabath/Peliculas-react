@@ -34,7 +34,7 @@ export default function App() {
                         <Route path="/detail/:id" element={<Detail />} />
                         <Route path="/search" element={<Search />} />
                         <Route path="/favorites" element={<Favorites />} />
-                        <Route path="*" element={<h1>error {/*personificar lindo*/}</h1>} />
+                        <Route path="*" element={<h1>Error</h1>} />
                     </Routes>
                     <Footer />
                 </Box>
