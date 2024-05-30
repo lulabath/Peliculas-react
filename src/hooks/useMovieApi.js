@@ -8,21 +8,24 @@ const useMovieApi = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     async function getMovies(url) {
+        if(!apiKey) {
+            console.error('apkiKey');
+            return;
+        }
         try{
             const { data } = await axios(url);
             console.log(data);
             setMovies(data.results);
             setTotalPages(data.total_pages);
-            // console.log(data);
         } catch (error) {
-            console.log(error);
+            console.log('error en fetch', error);
         }
     
     }
     async function searchMovies(query, page=1) {
         if(!apiKey) {
             console.error('apkiKey', error);
-            return
+            return;
         }
         try {
             const { data } = await axios(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${page}`);
