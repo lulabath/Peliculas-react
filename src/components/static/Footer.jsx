@@ -1,4 +1,4 @@
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Typography } from '@mui/material';
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
       textAlign: 'center',
       left: '0px',
     }}>
-      <Typography>Hecho por Luna Agustina Bath <FavoriteBorderIcon sx={{ verticalAlign: 'middle'}} /></Typography>
+      <Typography>Hecho por Luna Agustina Bath <FavoriteIcon sx={{ verticalAlign: 'middle'}} /></Typography>
     </footer>
   )
 }

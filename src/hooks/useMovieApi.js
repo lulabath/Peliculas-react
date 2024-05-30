@@ -5,6 +5,7 @@ const useMovieApi = () => {
     const [movies, setMovies] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
 
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     async function getMovies(url) {
         try{
@@ -19,13 +20,12 @@ const useMovieApi = () => {
     
     }
     async function searchMovies(query, page=1) {
-        const apiKey = import.meta.env.VITE_API_KEY;
         if(!apiKey) {
             console.error('apkiKey', error);
             return
         }
         try {
-            const { data } = await axios(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${query}&page=${page}`);
+            const { data } = await axios(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${page}`);
             setMovies(data.results);
             setTotalPages(data.total_pages);
         } catch (error) {

@@ -1,7 +1,7 @@
 import { Card, CardMedia, Grid, IconButton, Link as MuiLink } from "@mui/material";
 import { Link } from "react-router-dom";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { FavoritesContext } from '../context/FavoritesContext';
 import { useContext } from "react";
 
@@ -40,9 +40,9 @@ const ContainCard = ({ movies }) => {
                             />
                             <IconButton
                                 onClick={() => handleFavoriteClick(movie)}
-                                style={{position: 'absolute', color:'#FFE500', top:10, right:10}}
+                                style={{position: 'absolute', color:'white', top:10, right:10}}
                                 >
-                                {isFavorite(movie.id) ? <StarIcon /> : <StarBorderIcon />}
+                                {isFavorite(movie.id) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                             </IconButton>
                         </Card>
                     </MuiLink>
