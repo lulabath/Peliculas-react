@@ -11,21 +11,19 @@ import { FavoritesProvider } from "./context/FavoritesContext";
 import Favorites from "./views/Favorites";
 import "./index.css";
 
-
-export default function App() {
+const App = () => {
     return (
         <FavoritesProvider>
             <BrowserRouter>
                 <Box style={{
                     backgroundColor: '#04011A',
                     minHeight: "100vh",
-                    width:'100%',
+                    width: '100%',
                     overflow: "hidden",
                     color: "white",
-                    padding:0,
-                    margin:0,
+                    padding: 0,
+                    margin: 0,
                 }}>
-                    {/* <Typography fontFamily="Roboto" fontWeight="900" fontSize="16px" lineHeight="1.5"> */}
                     <Header />
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -40,7 +38,6 @@ export default function App() {
                 </Box>
             </BrowserRouter>
         </FavoritesProvider>
-
-
     );
 }
+export default App;

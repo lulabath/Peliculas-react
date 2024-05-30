@@ -8,8 +8,7 @@ import CustomPagination from '../components/CustomPagination';
 const Search = () => {
     const [query, setQuery] = useState('');
     const { movies, searchMovies, totalPages } = useMovieApi();
-    const [ currentPage, setCurrentPage] = useState(1);
-
+    const [currentPage, setCurrentPage] = useState(1);
 
     const handleSearch = (event) => {
         const value = event.target.value;
@@ -21,11 +20,11 @@ const Search = () => {
         console.log(value);
     };
 
-    useEffect(()=>{
-        if(query){
+    useEffect(() => {
+        if (query) {
             searchMovies(query, currentPage)
         }
-            
+
     }, [currentPage]);
 
     return (
@@ -37,7 +36,6 @@ const Search = () => {
                 color: 'white',
             }}
         >
-            {/*<TextField fullWidth label="Buscar" color="secondary" id="fullWidth" focused  sx={{ marginTop: '15%'}} />*/}
             <TextField
                 fullWidth
                 label="Busca por título"
@@ -47,18 +45,18 @@ const Search = () => {
                 onChange={handleSearch}
                 sx={{
                     marginTop: '15%',
-                    '& .MuiInputLabel-root': { fontSize: '1.50rem',  fontWeight: 'bold' },
+                    '& .MuiInputLabel-root': { fontSize: '1.50rem', fontWeight: 'bold' },
                     '& .MuiInput-underline:after': { borderBottomColor: 'white' },
-                    '& .MuiInputBase-input': { color: 'white', height: '40px', fontSize:'1.5rem' },
+                    '& .MuiInputBase-input': { color: 'white', height: '40px', fontSize: '1.5rem' },
                     '& label.Mui-focused': { color: 'white' },
                 }}
                 focused
             />
-            { movies.length > 0 && <ContainCard movies={movies} />}
+            {movies.length > 0 && <ContainCard movies={movies} />}
             <CustomPagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
             />
         </Box>
 

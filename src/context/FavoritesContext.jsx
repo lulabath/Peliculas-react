@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 //lo creamos y lo guardamos en una variable
 const FavoritesContext = createContext();
@@ -25,8 +25,8 @@ const FavoritesProvider = ({ children }) => {
   }
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite}}>{children}</FavoritesContext.Provider>
+    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite }}>{children}</FavoritesContext.Provider>
   )
 };
 //acá tengo que exportar tanto el proveedor como el context de fav
-export {FavoritesProvider, FavoritesContext };
+export { FavoritesProvider, FavoritesContext };

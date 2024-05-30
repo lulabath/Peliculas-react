@@ -8,30 +8,43 @@ import { useContext } from "react";
 const ContainCard = ({ movies }) => {
     //obtengo el estado del context y las funciones
     const { addFavorite, removeFavorite, isFavorite } = useContext(FavoritesContext);
-// asi puedo controlar si una pelicula está o no ya en mi array y la agrego o elimino.
+    // asi puedo controlar si una pelicula está o no ya en mi array y la agrego o elimino.
     const handleFavoriteClick = (movie) => {
         if (isFavorite(movie.id)) {
             removeFavorite(movie.id)
         } else {
-            addFavorite(movie); 
+            addFavorite(movie);
         }
     };
 
     return (
-        <Grid container spacing={1} justifyContent={'center'} sx={{ width: '100%', padding:'20px'}}>
+        <Grid
+            container spacing={1}
+            justifyContent={'center'}
+            sx={{
+                width: '100%',
+                padding: '20px'
+            }}>
             {movies.map(movie => (
                 <Grid item xs={4} sm={3} md={2} lg={2} xl={2} key={movie.id}>
-                    <MuiLink 
-                    component={Link} 
-                    to={`/detail/${movie.id}`}
-                     sx={{ textDecoration: 'none',
-                        cursor: 'pointer',
-                        '&:hover .MuiCard-root': {
-                            transform: 'scale(1.05)',
-                            transition: 'transform 0.3s ease-in-out',
-                        }
-                      }}>
-                        <Card style={{ height: '100%', width:'100%', borderRadius:0, position:'relative' }}>
+                    <MuiLink
+                        component={Link}
+                        to={`/detail/${movie.id}`}
+                        sx={{
+                            textDecoration: 'none',
+                            cursor: 'pointer',
+                            '&:hover .MuiCard-root': {
+                                transform: 'scale(1.05)',
+                                transition: 'transform 0.3s ease-in-out',
+                            }
+                        }}>
+                        <Card
+                            style={{
+                                height: '100%',
+                                width: '100%',
+                                borderRadius: 0,
+                                position: 'relative'
+                            }}>
                             <CardMedia
                                 component="img"
                                 image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -40,8 +53,8 @@ const ContainCard = ({ movies }) => {
                             />
                             <IconButton
                                 onClick={() => handleFavoriteClick(movie)}
-                                style={{position: 'absolute', color:'white', top:10, right:10}}
-                                >
+                                style={{ position: 'absolute', color: 'white', top: 10, right: 10 }}
+                            >
                                 {isFavorite(movie.id) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                             </IconButton>
                         </Card>
@@ -51,5 +64,4 @@ const ContainCard = ({ movies }) => {
         </Grid>
     )
 }
-
 export default ContainCard;

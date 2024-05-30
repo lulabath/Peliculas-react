@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Detail = () => {
-    const { id } = useParams(); //capto el id de la url que corresponde a la pelicula
+    //capto el id de la url que corresponde a la pelicula
+    const { id } = useParams();
     const navigate = useNavigate();
-
-    const apiKey = import.meta.env.VITE_API_KEY;
 
     //estados para guardar datos de pelicula, url del trailer, para controlar si se esta viendo el trailer
     const [movie, setMovie] = useState(null);
@@ -17,12 +16,12 @@ const Detail = () => {
     //useEfect para hacer la solicitud de datos cuando el comp se monta o cambia el id. y armo la funcion pa' llamar a la api y pedir los datos de la movie.
     useEffect(() => {
         const fetchMovie = async () => {
-            try {//le agrego la extensión para que la respuesta sea en español, por el overview
+            try {
+                //le agrego la extensión para que la respuesta sea en español, por el overview
                 const { data } = await axios(`https://api.themoviedb.org/3/movie/${id}?language=es-ES`, {
                     headers: {
                         accept: 'application/json',
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzUwOTBhNzgyOTMyMmY1N2I4MzE1OTRhZjE1NjRiYSIsInN1YiI6IjY2NDE1MzQ4NzQzZWE1M2FhMTU5YzI3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YHv44mHLPO3FPA0kvYJOnNT-oMSG2YVifL1HIz7n3YE'
-
                     }
                 });
                 setMovie(data);
@@ -46,9 +45,10 @@ const Detail = () => {
             }
         };
         fetchMovie();
-    }, [id])// pongo id como dependencia para que me ejecute la funcion cuando cambia - actualice
+    }, [id])
+    // pongo id como dependencia para que me ejecute la funcion cuando cambia - actualice
 
-    if (!movie) return <div>Loading..{/* buscar un loading lindo */}</div>;
+    if (!movie) return <div>Loading..</div>;
 
     const handleBackClick = () => {
         navigate(-1);
@@ -61,7 +61,7 @@ const Detail = () => {
 
     return (
         <Box
-            sx={{/*aca agregaria los estilos del contenedor principal*/
+            sx={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -73,22 +73,21 @@ const Detail = () => {
                 marginBottom: 'auto'
             }}
         >
-            {/* imagen de fondo, la que dice backdrop_path */}
             <Box
-                sx={{/*estilos del box con la info y el trailer */
+                sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     flexDirection: { xs: 'column', sm: 'row' },
                     backgroundColor: 'rgba(0, 0, 0, 0.7)',
                     padding: '5px',
-                    marginTop:'auto',
+                    marginTop: 'auto',
                     borderRadius: '2px',
                     maxWidth: '80%',
                     height: { xs: '80%', sm: '80%' },
                 }}
             >
                 <Box
-                    sx={{ 
+                    sx={{
                         flex: '1px',
                         display: 'flex',
                         padding: '2px',
@@ -98,11 +97,10 @@ const Detail = () => {
                         marginBottom: { xs: '2px', sm: '0' },
                         marginLeft: '2px',
                         overflowY: 'auto',
-                        maxWidth: { xs:'100%', sm:'50%' },
+                        maxWidth: { xs: '100%', sm: '50%' },
                         maxHeight: '100vh',
                     }}
                 >
-                    {/*estilos devlos textos :)*/}
                     <Typography variant="h6" sx={{ margin: 'auto' }}>
                         {movie.title}
                     </Typography>
@@ -112,7 +110,7 @@ const Detail = () => {
                     <Typography variant="h6" sx={{ marginBottom: '1px' }}>
                         Géneros:
                     </Typography>
-                    <Typography variant="body1" sx={{marginBottom: '2px'}}>
+                    <Typography variant="body1" sx={{ marginBottom: '2px' }}>
                         {movie.genres.map((genre) => genre.name).join(',')}
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
@@ -129,8 +127,8 @@ const Detail = () => {
                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     alt={movie.title}
                     sx={{
-                        width: { xs:'0', sm: '250px' },
-                        height: { xs:'0', sm: 'auto' },
+                        width: { xs: '0', sm: '250px' },
+                        height: { xs: '0', sm: 'auto' },
                         borderRadius: '8px',
                     }}
                 />
@@ -143,8 +141,7 @@ const Detail = () => {
                     </Button>
                 </Box>
             </Box>
-            {/*contenedor del trailer*/}
-            {showTrailer && trailerUrl &&(
+            {showTrailer && trailerUrl && (
                 <Box
                     sx={{
                         position: 'fixed',
@@ -155,7 +152,7 @@ const Detail = () => {
                         alignItems: 'center',
                         height: '100vh',
                         width: '100vw',
-                        backgroundColor:'rgba(0, 0, 0, 0.8)'
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)'
                     }}
                 >
                     <iframe

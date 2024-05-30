@@ -16,7 +16,6 @@ const useMovieApi = () => {
         } catch (error) {
             console.log('error en fetch', error);
         }
-    
     }
     async function searchMovies(query, page=1) {
         try {
@@ -28,7 +27,6 @@ const useMovieApi = () => {
         }
     }
 
-
     return {
         movies,
         getMovies,
@@ -36,5 +34,4 @@ const useMovieApi = () => {
         totalPages,
     };
 }
-
 export default useMovieApi;
