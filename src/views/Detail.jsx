@@ -7,6 +7,8 @@ const Detail = () => {
     const { id } = useParams(); //capto el id de la url que corresponde a la pelicula
     const navigate = useNavigate();
 
+    const apiKey = import.meta.env.VITE_API_KEY;
+
     //estados para guardar datos de pelicula, url del trailer, para controlar si se esta viendo el trailer
     const [movie, setMovie] = useState(null);
     const [trailerUrl, setTrailerUrl] = useState(null);
@@ -19,7 +21,7 @@ const Detail = () => {
                 const { data } = await axios(`https://api.themoviedb.org/3/movie/${id}?language=es-ES`, {
                     headers: {
                         accept: 'application/json',
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzUwOTBhNzgyOTMyMmY1N2I4MzE1OTRhZjE1NjRiYSIsInN1YiI6IjY2NDE1MzQ4NzQzZWE1M2FhMTU5YzI3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YHv44mHLPO3FPA0kvYJOnNT-oMSG2YVifL1HIz7n3YE'
+                        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
                     }
                 });
                 setMovie(data);
@@ -29,7 +31,7 @@ const Detail = () => {
                 const videoResponse = await axios(`https://api.themoviedb.org/3/movie/${id}/videos?language=es-ES`, {
                     headers: {
                         accept: 'application/json',
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzUwOTBhNzgyOTMyMmY1N2I4MzE1OTRhZjE1NjRiYSIsInN1YiI6IjY2NDE1MzQ4NzQzZWE1M2FhMTU5YzI3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YHv44mHLPO3FPA0kvYJOnNT-oMSG2YVifL1HIz7n3YE'
+                        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
                     }
                 });
 
