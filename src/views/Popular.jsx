@@ -11,12 +11,11 @@ const Popular = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
-        const url = (`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`)
+        const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`;
         getMovies(url);
-    }, [currentPage]); // creería que la dependencia queda vecía para que se ejecute solo cuando de monta el componente. A chequear!
-
-
+    }, [currentPage]); // ejecuta cada vez que el currentPage cambie! (Actualización)
     console.log(movies);
+    
     return (
         <Box sx={{ margin: '20px',padding:8, justifyContent:'center'}}>
             {/*fantan estilar varias cositas, NO OLVIDARR */}
