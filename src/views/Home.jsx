@@ -11,7 +11,8 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     
     const apiKey = import.meta.env.VITE_API_KEY;
-  //  console.log(apiKey);
+    console.log(apiKey);
+    console.log(import.meta.env);
 
 
     useEffect(() => {
@@ -20,10 +21,10 @@ const Home = () => {
             return;
         }
 
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=f75090a7829322f57b831594af1564ba&page=${currentPage}`;
-        //console.log(url);
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&page=${currentPage}`;
+        console.log(url);
         getMovies(url);
-    }, [currentPage, getMovies]);
+    }, [currentPage, getMovies, apiKey]);
 
     //pruebo primero con la lista de populares
     const popularMovies = [...movies].sort((a, b) => b.popularity - a.popularity);

@@ -9,7 +9,7 @@ const Popular = () => {
     const [ currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        const url = (`https://api.themoviedb.org/3/movie/popular?api_key=f75090a7829322f57b831594af1564ba&page=${currentPage}`)
+        const url = (`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&page=${currentPage}`)
         getMovies(url);
     }, [currentPage]); // creería que la dependencia queda vecía para que se ejecute solo cuando de monta el componente. A chequear!
 
