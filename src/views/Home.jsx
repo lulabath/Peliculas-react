@@ -5,10 +5,14 @@ import CustomPagination from "../components/CustomPagination";
 import { Box, Button, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { Link } from "react-router-dom"
 import CustomCarousel from "../components/CustomCarousel";
+
 const Home = () => {
     const { movies, getMovies, totalPages } = useMovieApi();
     const [currentPage, setCurrentPage] = useState(1);
+    
     const apiKey = import.meta.env.VITE_API_KEY;
+  //  console.log(apiKey);
+
 
     useEffect(() => {
         if(!apiKey) {
@@ -16,7 +20,8 @@ const Home = () => {
             return;
         }
 
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`;
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=f75090a7829322f57b831594af1564ba&page=${currentPage}`;
+        //console.log(url);
         getMovies(url);
     }, [currentPage, getMovies]);
 
