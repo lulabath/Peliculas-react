@@ -12,7 +12,7 @@ const useMovieApi = () => {
             const { data } = await axios(url);
             setMovies(data.results);
             setTotalPages(data.total_pages);
-            console.log(data);
+            // console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -20,7 +20,7 @@ const useMovieApi = () => {
     }
     async function searchMovies(query, page=1) {
         try {
-            const { data } = await axios(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${page}`);
+            const { data } = await axios(`https://api.themoviedb.org/3/search/movie?api_key=f75090a7829322f57b831594af1564ba&query=${query}&page=${page}`);
             setMovies(data.results);
             setTotalPages(data.total_pages);
         } catch (error) {
