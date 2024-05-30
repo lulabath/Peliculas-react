@@ -23,7 +23,6 @@ const Home = () => {
         }
 
         const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`;
-        console.log(url);
         getMovies(url);
     }, [currentPage, getMovies, apiKey]);
 
