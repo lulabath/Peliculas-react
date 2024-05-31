@@ -1,4 +1,4 @@
-## Generador de memes
+## Movie app
 
 <p>Proyecto final para ADA ITW, en donde utilizo funcionalidades de react avanzadas; también hago uso de la biblioteca Material UI y VITE como framework.</p>
 
