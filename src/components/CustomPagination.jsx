@@ -3,7 +3,7 @@ import { Pagination as MuiPagination, Stack } from "@mui/material";
 const CustomPagination = ({ currentPage, onPageChange, totalPages }) => {
 
   const handlePageChange = (event, value) => {
-    console.log(`pagina ${value}`);
+    //console.log(`pagina ${value}`);
     onPageChange(value);
   };
 
